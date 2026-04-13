@@ -1,0 +1,24 @@
+---
+interface Props {
+  type?: "intro" | "step";
+  class?: string;
+}
+
+const { type = "step", class: className }: Props = Astro.props;
+
+// Basic class for all types
+const base = "mx-4";
+
+// variants according to types
+const variants: Record<string, string> = {
+  intro: "my-8 md:my-16",
+  step: "my-16",
+};
+
+// final class with all elements
+const sectionClass = `${base} ${variants[type] ?? ""} ${className ?? ""}`;
+---
+
+<section class={sectionClass}>
+  <slot />
+</section>

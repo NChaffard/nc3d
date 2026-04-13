@@ -1,0 +1,19 @@
+---
+import Service from "../icons/Service.astro";
+interface Props {
+  class?: string;
+}
+const { class: className }: Props = Astro.props;
+---
+
+<ul class:list={["h-120 md:grid grid-cols-3", className]}>
+  <li>
+    <Service icon="conception" service="Conception" />
+  </li>
+  <li>
+    <Service icon="laser" service="Découpe laser" color="#A4DBEF" />
+  </li>
+  <li>
+    <Service icon="fdm" service="Impression 3D" color="#FFA3A3" />
+  </li>
+</ul>

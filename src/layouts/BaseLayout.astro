@@ -1,0 +1,32 @@
+---
+import Footer from "../components/common/Footer.astro";
+import "../styles/global.css";
+
+interface Props {
+  title: string;
+  description?: string;
+}
+const { title = "NC3D", description = " Fabrication d'objets" }: Props =
+  Astro.props;
+---
+
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" href="/favicon.ico" />
+    <meta name="generator" content={Astro.generator} />
+    <meta name="description" content={description} />
+    <title>{title}</title>
+  </head>
+  <body
+    class="md:bg-[url('../assets/textures/8x8.png')] bg-repeat [bg-size:8px_8px]"
+  >
+    <div class="bg-amber-50 max-w-6xl md:mx-auto min-h-screen flex flex-col">
+      <slot />
+      <Footer />
+    </div>
+  </body>
+</html>

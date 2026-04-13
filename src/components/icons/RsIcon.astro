@@ -1,0 +1,22 @@
+---
+import InstaIcon from "../../assets/icons/insta.svg";
+import FbIcon from "../../assets/icons/facebook.svg";
+import YtIcon from "../../assets/icons/youtube.svg";
+import MailIcon from "../../assets/icons/mail.svg";
+
+interface Props {
+  icon?: "insta" | "fb" | "yt" | "mail";
+  class?: string;
+}
+const { icon = "insta", class: className }: Props = Astro.props;
+
+const iconMap = {
+  insta: InstaIcon,
+  fb: FbIcon,
+  yt: YtIcon,
+  mail: MailIcon,
+} as const;
+const Icon = iconMap[icon];
+---
+
+<Icon class:list={["fill-amber-50", className]} />

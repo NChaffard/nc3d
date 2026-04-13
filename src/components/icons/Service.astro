@@ -1,0 +1,27 @@
+---
+import Hexa from "../../assets/services/hexa.svg";
+interface Props {
+  icon: string;
+  service: string;
+  color?: string;
+}
+const { icon, service, color = "#C5FFB3" }: Props = Astro.props;
+// Import dynamique du svg selon la prop icon
+const { default: Icon } = await import(`../../assets/services/${icon}.svg`);
+---
+
+<article class="h-full flex flex-col">
+  <div class="relative h-100 flex justify-center align-middle items-center">
+    <Hexa
+      class="absolute w-full"
+      width={320}
+      height={320}
+      fill={color}
+      stroke="#111"
+      stroke-width="2"
+      stroke-opacity="0.2"
+    />
+    <Icon class="absolute w-full" />
+  </div>
+  <h3 class="page-h3 h-20 self-center">{service}</h3>
+</article>

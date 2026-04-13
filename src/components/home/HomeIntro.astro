@@ -1,0 +1,23 @@
+---
+import Button from "../common/Button.astro";
+interface Props {
+  class: string;
+}
+const { class: className }: Props = Astro.props;
+---
+
+<div class:list={["md:flex flex-col h-120 my-10 px-30", className]}>
+  <p class="mx-26 py-2 text-lg">
+    Passionné de fabrication assisté par ordinateur, je fabrique des objets de
+    décoration. <br />
+    Impression 3D en filament et résine, découpe et gravure laser CO2, <br />
+    j'aime expliqué mon process sur ce site, ainsi que sur les reseaux sociaux, <br
+    />
+    disponibles en bas de page. <br />
+    N'hésitez pas à me contacter si vous avez un projet à réaliser !
+  </p>
+
+  <div class="my-20 flex justify-center">
+    <Button title="Mes Projets" link="/galerie" />
+  </div>
+</div>

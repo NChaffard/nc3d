@@ -1,0 +1,16 @@
+---
+import Button from "../components/common/Button.astro";
+import BaseLayout from "./BaseLayout.astro";
+---
+
+<BaseLayout
+  title="NC3D - Mentions légales"
+  description="Mentions légales du site NC3D"
+>
+  <main class="flex-1 mx-auto">
+    <slot />
+    <div class="text-center mt-20">
+      <Button title="Retour à l'accueil" link="/" />
+    </div>
+  </main>
+</BaseLayout>

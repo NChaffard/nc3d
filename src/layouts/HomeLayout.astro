@@ -1,0 +1,12 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+
+import HomeHeader from "../components/home/HomeHeader.astro";
+---
+
+<BaseLayout title="NC3D" description="Fabrication d'objets de décoration">
+  <HomeHeader />
+  <main class="flex-1">
+    <slot />
+  </main>
+</BaseLayout>

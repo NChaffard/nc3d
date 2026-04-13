@@ -1,0 +1,22 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+
+import Logo from "../assets/icons/nc3d.svg";
+import Button from "../components/common/Button.astro";
+---
+
+<BaseLayout
+  title="NC3D - Projets"
+  description="Galerie de projets d'objets de décoration"
+>
+  <header class="flex py-6 justify-center">
+    <h1 class="page-title text-center">Mes Projets</h1>
+  </header>
+  <main class="flex-1 mx-auto">
+    <slot />
+
+    <div class="text-center mt-20">
+      <Button title="Retour à l'accueil" link="/" />
+    </div>
+  </main>
+</BaseLayout>

@@ -1,0 +1,39 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+
+import Image from "astro/components/Image.astro";
+import Button from "../components/common/Button.astro";
+import type { ImageMetadata } from "astro";
+
+interface Props {
+  title: string;
+  cover: ImageMetadata;
+  coverAlt: string;
+}
+
+const { title, cover, coverAlt }: Props = Astro.props;
+---
+
+<BaseLayout title=`NC3D - Projet: ${title}` description={coverAlt}>
+  <header class="">
+    <Image
+      src={cover}
+      alt={coverAlt}
+      width={1152}
+      height={864}
+      fit="cover"
+      layout="constrained"
+    />
+
+    <h1 class="page-title flex justify-center mt-8">{title}</h1>
+  </header>
+
+  <main class="flex-1">
+    <article class="project">
+      <slot />
+    </article>
+    <div class="h-40 flex place-items-center justify-center">
+      <Button title="Retour aux projets" link="/galerie" />
+    </div>
+  </main>
+</BaseLayout>

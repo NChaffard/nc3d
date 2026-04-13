@@ -1,46 +1,91 @@
-# Astro Starter Kit: Basics
+# Portfolio NC3D
 
-```sh
-npm create astro@latest -- --template basics
-```
+## Installation
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+- npm install
 
-## 🚀 Project Structure
+## Commandes
 
-Inside of your Astro project, you'll see the following folders and files:
+- npm run dev : Lance la version de developpement
+- npm run build : Construit la version html css dans le dossier dist.
+- npm serv /dist: test du build.
 
-```text
-/
-├── public/
-│   └── favicon.svg
-├── src
-│   ├── assets
-│   │   └── astro.svg
-│   ├── components
-│   │   └── Welcome.astro
-│   ├── layouts
-│   │   └── Layout.astro
-│   └── pages
-│       └── index.astro
-└── package.json
-```
+-Tailwind
 
-To learn more about the folder structure of an Astro project, refer to [our guide on project structure](https://docs.astro.build/en/basics/project-structure/).
+## Structure
 
-## 🧞 Commands
+### Base
 
-All commands are run from the root of the project, from a terminal:
+BaseLayout.astro
 
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
+### Composants
 
-## 👀 Want to learn more?
+#### Footer
 
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+/common/Footer.astro
+
+- Liens RS
+- Lien mentions légales
+
+### Pages
+
+#### Home
+
+HomeLayout.astro
+
+##### Banner
+
+Composant: /home/HomeBanner
+
+- Image
+
+##### Hero
+
+Composant: /home/HomeIntro
+
+- Logo
+- Titre
+- Description
+
+##### Description des services
+
+Composant: /home/Services
+
+- Visible que en desktop
+- 3 cases avec logo + h3
+
+##### Galerie
+
+Composant: /common/Gallery
+
+- Listes de projets en mobile, lien vers projets en desktop
+
+#### Projects
+
+GalerieLayout.astro
+
+- Liste des projets.
+- Liens vers projet correspondant
+
+#### Project
+
+ProjectLayout.astro
+
+- gestion des projets avec content collection, utilise des fichiers md ou mdx
+  - Frontmatter
+    - title string
+    - slug string
+    - tags arrray
+    - date string
+    - cover string
+    - coverAlt string
+- MDX
+  - Sections definies par un composant: /common/Section
+  - integration video Youtube via composant: /common/Youtube
+
+- creation de config.ts dans /content pour valider les types
+  - defineCollection pour creer la collection des variables du frontmatter
+  - helper image pour gestion thumbnail
+  - zod pour la validation
+
+#### Mentions Legales

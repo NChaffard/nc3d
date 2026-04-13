@@ -1,0 +1,35 @@
+---
+import { getCollection } from "astro:content";
+import { Image } from "astro:assets";
+
+interface Props {
+  // ajouter types de content avec | quuand ajout de collection
+  content: "projects";
+  class?: string;
+}
+const { content, class: className }: Props = Astro.props;
+const items = await getCollection(content);
+---
+
+<ul
+  class:list={["mx-2 flex flex-col md:flex-row gap-10 items-center", className]}
+>
+  {
+    items.map((item) => (
+      <li class="w-full h-full border">
+        <article class="  bg-white duration-300 hover:saturate-180">
+          <Image
+            class=""
+            src={item.data.cover}
+            alt={item.data.coverAlt}
+            width={360}
+          />
+          <div>
+            <p class="  text-l ">{item.data.coverAlt}</p>
+            <a href={`/projects/${item.data.slug}`}>Lire la suite...</a>
+          </div>
+        </article>
+      </li>
+    ))
+  }
+</ul>
