@@ -12,23 +12,26 @@ const items = await getCollection(content);
 ---
 
 <ul
-  class:list={["mx-2 flex flex-col md:flex-row gap-10 items-center", className]}
+  class:list={[
+    "mx-2 flex flex-col md:flex-row md:flex-wrap md:justify-center gap-10 items-center",
+    className,
+  ]}
 >
   {
     items.map((item) => (
-      <li class="w-full h-full border">
-        <article class="  bg-white duration-300 hover:saturate-180">
-          <Image
-            class=""
-            src={item.data.cover}
-            alt={item.data.coverAlt}
-            width={360}
-          />
-          <div>
-            <p class="  text-l ">{item.data.coverAlt}</p>
-            <a href={`/projects/${item.data.slug}`}>Lire la suite...</a>
-          </div>
-        </article>
+      <li class=" h-90 w-85  border">
+        <a class="" href={`/projects/${item.data.slug}`}>
+          <article class="relative h-full w-full pb-2 bg-white">
+            <Image
+              class="h-70 duration-600 hover:brightness-130"
+              src={item.data.cover}
+              alt={item.data.coverAlt}
+              width={360}
+            />
+
+            <p class="px-4 py-2  text-l md:text-xl ">{item.data.coverAlt}</p>
+          </article>
+        </a>
       </li>
     ))
   }

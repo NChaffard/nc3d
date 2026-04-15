@@ -1,5 +1,10 @@
 # Portfolio NC3D
 
+## Intro
+
+Site en Astro 5.8 et Tailwind 4.2.
+Module @astro/mdx
+
 ## Installation
 
 - npm install
@@ -10,17 +15,13 @@
 - npm run build : Construit la version html css dans le dossier dist.
 - npm serv /dist: test du build.
 
--Tailwind
-
 ## Structure
 
 ### Base
 
 BaseLayout.astro
 
-### Composants
-
-#### Footer
+### Footer
 
 /common/Footer.astro
 
@@ -33,13 +34,13 @@ BaseLayout.astro
 
 HomeLayout.astro
 
-##### Banner
+**Banner**
 
 Composant: /home/HomeBanner
 
 - Image
 
-##### Hero
+**Hero**
 
 Composant: /home/HomeIntro
 
@@ -47,14 +48,14 @@ Composant: /home/HomeIntro
 - Titre
 - Description
 
-##### Description des services
+**Description des services**
 
 Composant: /home/Services
 
 - Visible que en desktop
 - 3 cases avec logo + h3
 
-##### Galerie
+**Galerie**
 
 Composant: /common/Gallery
 

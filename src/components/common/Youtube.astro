@@ -6,7 +6,7 @@ interface Props {
 const { id, title = "video youtube" }: Props = Astro.props;
 ---
 
-<div class="max-w-3xl mx-auto my-4">
+<div class="max-w-3xl mx-auto my-8">
   <iframe
     class="aspect-video w-full"
     src={`https://www.youtube.com/embed/${id}?rel=0`}

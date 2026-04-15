@@ -17,6 +17,16 @@ const iconMap = {
   mail: MailIcon,
 } as const;
 const Icon = iconMap[icon];
+
+const linkMap = {
+  insta: "https://www.instagram.com/nc3dworkshop/",
+  fb: "#",
+  yt: "https://www.youtube.com/@NC3DShop/shorts",
+  mail: "#",
+};
+const link = linkMap[icon];
 ---
 
-<Icon class:list={["fill-amber-50", className]} />
+<a href={link}>
+  <Icon class:list={["fill-amber-50 hover:duration-500", className]} />
+</a>
