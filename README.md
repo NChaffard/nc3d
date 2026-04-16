@@ -90,3 +90,5 @@ ProjectLayout.astro
   - zod pour la validation
 
 #### Mentions Legales
+
+- Page de base expliquant les mentions légales.
