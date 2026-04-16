@@ -3,36 +3,83 @@ import { getCollection } from "astro:content";
 import { Image } from "astro:assets";
 
 interface Props {
-  // ajouter types de content avec | quuand ajout de collection
   content: "projects";
   class?: string;
 }
+
 const { content, class: className }: Props = Astro.props;
 const items = await getCollection(content);
+const tags = [...new Set(items.flatMap((item) => item.data.tags))];
 ---
 
-<ul
-  class:list={[
-    "mx-2 flex flex-col md:flex-row md:flex-wrap md:justify-center gap-10 items-center",
-    className,
-  ]}
->
-  {
-    items.map((item) => (
-      <li class=" h-90 w-85  border">
-        <a class="" href={`/projects/${item.data.slug}`}>
-          <article class="relative h-full w-full pb-2 bg-white">
-            <Image
-              class="h-70 duration-600 hover:brightness-130"
-              src={item.data.cover}
-              alt={item.data.coverAlt}
-              width={360}
-            />
+<section class={`gallery ${className ?? ""}`}>
+  <!-- Menu de tags -->
+  <div class="tags mb-6 flex gap-2 flex-wrap justify-center">
+    <button
+      class="tag-btn active px-8 md:px-3 py-4 md:py-1 rounded border cursor-pointer bg-white"
+      data-tag="all">Tous</button
+    >
+    {
+      tags.map((tag) => (
+        <button
+          class="tag-btn px-8 md:px-3 py-4 md:py-1 rounded border cursor-pointer bg-white"
+          data-tag={tag}
+        >
+          {tag}
+        </button>
+      ))
+    }
+  </div>
 
-            <p class="px-4 py-2  text-l md:text-xl ">{item.data.coverAlt}</p>
-          </article>
-        </a>
-      </li>
-    ))
-  }
-</ul>
+  <!-- Galerie -->
+  <ul
+    class:list={[
+      "mx-2 flex flex-col md:flex-row md:flex-wrap md:justify-center gap-10 items-center",
+      className,
+    ]}
+    id="gallery-items"
+  >
+    {
+      items.map((item) => (
+        <li
+          class="h-90 w-85 border"
+          data-tags={JSON.stringify(item.data.tags)}
+          data-slug={item.data.slug}
+        >
+          <a href={`/projects/${item.data.slug}`}>
+            <article class="relative h-full w-full pb-2 bg-white">
+              <Image
+                class="h-70 duration-600 hover:brightness-130"
+                src={item.data.cover}
+                alt={item.data.coverAlt}
+                width={360}
+              />
+              <p class="px-4 py-2 text-l md:text-xl">{item.data.coverAlt}</p>
+            </article>
+          </a>
+        </li>
+      ))
+    }
+  </ul>
+</section>
+
+<script is:inline>
+  const buttons = document.querySelectorAll(".tag-btn");
+  const items = document.querySelectorAll(".gallery-item, [data-tags]");
+
+  buttons.forEach((button) => {
+    button.addEventListener("click", () => {
+      // enlever la classe "active"
+      buttons.forEach((btn) => btn.classList.remove("active"));
+      button.classList.add("active");
+
+      const tag = button.dataset.tag;
+
+      items.forEach((item) => {
+        const tags = JSON.parse(item.dataset.tags);
+        const show = tag === "all" || tags.includes(tag);
+        item.style.display = show ? "" : "none";
+      });
+    });
+  });
+</script>
