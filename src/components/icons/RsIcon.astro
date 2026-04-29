@@ -23,10 +23,18 @@ const linkMap = {
   fb: "#",
   yt: "https://www.youtube.com/@NC3DShop/shorts",
   mail: "#",
-};
+} as const;
 const link = linkMap[icon];
+
+const labelMap = {
+  insta: "Lien vers ma page Instagram",
+  fb: "Lien vers ma page Facebbok",
+  yt: "Lien vers ma page Youtube",
+  mail: "Lien pour m'envoyer un mail",
+} as const;
+const label = labelMap[icon];
 ---
 
-<a href={link}>
+<a href={link} aria-label={label}>
   <Icon class:list={["fill-amber-50 hover:duration-500", className]} />
 </a>
